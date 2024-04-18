@@ -143,6 +143,16 @@ class Database{
     return $this->execute($query);
   }
 
+  public function selectAll($query = null) {
+    // Verifica se a query está vazia
+    if (empty($query)) {
+        exit; // Ou você pode lançar uma exceção, dependendo do comportamento desejado
+    }
+    
+    // EXECUTA A QUERY
+    return $this->execute($query)->fetchAll(PDO::FETCH_ASSOC);
+  }
+
   /**
    * Método responsável por executar atualizações no banco de dados
    * @param  string $where
