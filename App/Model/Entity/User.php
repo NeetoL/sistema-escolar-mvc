@@ -13,4 +13,11 @@ class User{
     public static function getMatricula($matricula){
         return (new Database('alunos'))->select('matricula ="'.$matricula.'"')->fetchObject(self::class);
     }
+
+    public static function getnotas($id){
+        $obDatabase = new Database('notas');
+        $result = $obDatabase->selectAll('select * from notas');
+
+        return $result;
+    }
 }

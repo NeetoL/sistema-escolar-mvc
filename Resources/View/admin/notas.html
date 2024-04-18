@@ -38,22 +38,33 @@
                         <th title="" style="text-align: center;"> F2 <span class="icon-arrow">&UpArrow;</span></th>
                     </tr>
                 </thead>                
-                <tbody>
-                    <tr>
-                        <td rowspan="2" colspan="4"> Sistemas Operacionais </td>
-                        <td rowspan="2">10</td>
-                        <td rowspan="2">10</td>
-                        <td rowspan="2">10</td>
-                        <td rowspan="2">10</td>
-                        <td rowspan="2">10</td>
-                        <td rowspan="2">10</td>
-                        <td rowspan="2">10</td>
-                        <!-- delivered = verde -->
-                        <!--  -->
-                        <td rowspan="2"><p class="status delivered">Aprovado</p></td>
-                    </tr>                   
+                <tbody id="notas">
+                                
                 </tbody>
             </table>
         </section>
     </main>
  </section>
+
+ <script>
+     $(document).ready(function() {
+        var json = JSON.parse('{{notas}}');
+        var html = '';
+        $.each(json, function(i, obj){
+            html += '<tr>';
+            html += `<td rowspan="2" colspan="4">Nome da Disciplina</td>`; 
+            html += `<td rowspan="2">${obj.nota_p1}</td>`;
+            html += `<td rowspan="2">porcentagem falta</td>`;
+            html += `<td rowspan="2">${obj.nota_p2}</td>`;
+            html += `<td rowspan="2">porcentagem falta</td>`;
+            html += `<td rowspan="2">Media</td>`;
+            html += `<td rowspan="2">${obj.nota_p3}</td>`;
+            html += `<td rowspan="2">Media Final</td>`;
+            html += `<td rowspan="2"><p class="status delivered">Aprovado</p></td>`;
+            html += '</tr><tr></tr>';
+        })
+
+        $("#notas").append(html);
+        console.log(json);
+     })
+ </script>
